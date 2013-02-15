@@ -1,2 +1,2 @@
-teched.2013.mono
+TechEd 2013 - Creating cross-platform mobile application with Mono and .NET 
 ================
