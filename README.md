@@ -15,3 +15,4 @@ Personal Notes:
  - http://stackoverflow.com/questions/3670898/reusing-monotouch-code-in-monodroid-app
  - http://blog.xamarin.com/mwc_2012/
  - http://xamarin.com/mobileapi
+ - http://www.slideshare.net/Xamarin/crossplatform-mobile-development-12658651
