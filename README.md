@@ -11,6 +11,5 @@ Native mobile applications have received a lot of attention in recent years. In 
 Personal Notes:
 ---------------------
 
-
-# http://stackoverflow.com/questions/8904465/how-to-make-monotouch-cross-platform
-# http://stackoverflow.com/questions/3670898/reusing-monotouch-code-in-monodroid-app
+ - http://stackoverflow.com/questions/8904465/how-to-make-monotouch-cross-platform
+ - http://stackoverflow.com/questions/3670898/reusing-monotouch-code-in-monodroid-app
