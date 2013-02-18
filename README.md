@@ -13,3 +13,4 @@ Personal Notes:
 
  - http://stackoverflow.com/questions/8904465/how-to-make-monotouch-cross-platform
  - http://stackoverflow.com/questions/3670898/reusing-monotouch-code-in-monodroid-app
+ - http://blog.xamarin.com/mwc_2012/
