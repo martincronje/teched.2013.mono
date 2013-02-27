@@ -41,6 +41,7 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LocationSerialisationFixture.cs" />
     <Compile Include="ForecastSerialisationFixture.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -49,7 +50,9 @@
     <None Include="Resources\forecast.success.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\lookup.success.json" />
+    <None Include="Resources\lookup.success.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QuickWeather.Proxy\QuickWeather.Proxy.csproj">
