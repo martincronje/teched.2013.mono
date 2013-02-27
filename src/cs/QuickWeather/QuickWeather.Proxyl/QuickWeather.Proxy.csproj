@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C2C47377-CF51-4EFD-867A-79491B9C5798}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>QuickWeather.Proxy</RootNamespace>
+    <AssemblyName>QuickWeather.Proxy</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Forecast\Forecast.cs" />
+    <Compile Include="Forecast\ForecastDate.cs" />
+    <Compile Include="Forecast\ForecastResponse.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Forecast\Precipitation.cs" />
+    <Compile Include="Forecast\ResponseInfo.cs" />
+    <Compile Include="Forecast\SimpleForecast.cs" />
+    <Compile Include="Forecast\SimpleForecastDay.cs" />
+    <Compile Include="Forecast\Temperature.cs" />
+    <Compile Include="Forecast\TextForecast.cs" />
+    <Compile Include="Forecast\TextForecastDay.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Location\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+</Project>
