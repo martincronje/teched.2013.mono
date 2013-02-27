@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="LocationSerialisationFixture.cs" />
     <Compile Include="ForecastSerialisationFixture.cs" />
+    <Compile Include="SerialisationFixtureBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

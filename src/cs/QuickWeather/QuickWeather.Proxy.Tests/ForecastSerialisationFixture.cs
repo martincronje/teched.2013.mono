@@ -1,17 +1,17 @@
-using System.IO;
-using System.Runtime.Serialization.Json;
 using NUnit.Framework;
 using QuickWeather.Proxy.Forecast;
 
 namespace QuickWeather.Proxy.Tests
 {
     [TestFixture]
-    public class ForecastSerialisationFixture
+    public class ForecastSerialisationFixture : SerialisationFixtureBase
     {
         [Test]
-        public void ShouldDeserialiseValidTextForecastSucess ()
+        public void ShouldDeserialiseValidTextForecastSucess()
         {
-            var forecastResponse = DeserialiseFile();
+            var forecastResponse = DeserialiseFile<ForecastResponse>("Resources/forecast.success.json");
+            Assert.IsNotNull(forecastResponse.Forecast);
+            Assert.IsNotNull(forecastResponse.Forecast.SimpleForecast);
 
             var textForecast = forecastResponse.Forecast.TextForecast;
             Assert.IsNotNull(textForecast);
@@ -32,7 +32,10 @@ namespace QuickWeather.Proxy.Tests
         [Test]
         public void ShouldDeserialiseValidSimpleForecastSucess()
         {
-            var forecastResponse = DeserialiseFile();
+            var forecastResponse = DeserialiseFile<ForecastResponse>("Resources/forecast.success.json");
+            Assert.IsNotNull(forecastResponse.Forecast);
+            Assert.IsNotNull(forecastResponse.Forecast.SimpleForecast);
+
             var simpleForecast = forecastResponse.Forecast.SimpleForecast;
 
             Assert.IsNotNull(simpleForecast);
@@ -62,24 +65,5 @@ namespace QuickWeather.Proxy.Tests
                 Assert.AreNotEqual(0, day.MaxHumidity);
             }
         }
-
-        private static ForecastResponse DeserialiseFile()
-        {
-            var serialiser = new DataContractJsonSerializer(typeof(ForecastResponse));
-            var input = File.OpenRead("Resources/forecast.success.json");
-            var deserialised = serialiser.ReadObject(input);
-
-            Assert.IsNotNull(deserialised);
-            Assert.IsInstanceOf<ForecastResponse>(deserialised);
-
-            var forecastResponse = (ForecastResponse)deserialised;
-
-            Assert.IsNotNull(forecastResponse.Forecast);
-            Assert.IsNotNull(forecastResponse.Forecast.SimpleForecast);
-
-            return forecastResponse;
-
-        }
-
     }
 }
