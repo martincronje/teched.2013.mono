@@ -1,0 +1,30 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="QuickWeather.Model\MyClass.cs">
+    <Files>
+      <File FileName="QuickWeather.Model\MyClass.cs" Line="9" Column="13" />
+      <File FileName="QuickWeather.Model.Tests\Test.cs" Line="12" Column="4" />
+      <File FileName="QuickWeather.Model.Tests\Resources\forecast.sucess.json" Line="2" Column="6" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="QuickWeather.Model" expanded="True" />
+          <Node name="QuickWeather.Model.Tests" expanded="True">
+            <Node name="Resources" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
