@@ -96,14 +96,13 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="HelloWorld_iOSViewController.cs" />
-    <Compile Include="HelloWorld_iOSViewController.designer.cs">
-      <DependentUpon>HelloWorld_iOSViewController.cs</DependentUpon>
+    <Compile Include="HelloWorldViewController.cs" />
+    <Compile Include="HelloWorldViewController.designer.cs">
+      <DependentUpon>HelloWorldViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <InterfaceDefinition Include="HelloWorld_iOSViewController_iPhone.xib" />
-    <InterfaceDefinition Include="HelloWorld_iOSViewController_iPad.xib" />
+    <InterfaceDefinition Include="HelloWorldViewController.xib" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
 </Project>

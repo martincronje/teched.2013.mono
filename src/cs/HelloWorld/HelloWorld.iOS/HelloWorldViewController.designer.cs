@@ -8,7 +8,7 @@ using MonoTouch.Foundation;
 namespace HelloWorld.iOS
 {
 	[Register ("HelloWorld_iOSViewController")]
-	partial class HelloWorld_iOSViewController
+	partial class HelloWorldViewController
 	{
 		void ReleaseDesignerOutlets ()
 		{
