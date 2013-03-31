@@ -1,4 +1,4 @@
-# Demo Setup
+# Presentation checklisk
 
 #### On OSX
 	1. Start Xcode, Eclipse and Xamarin Studio
