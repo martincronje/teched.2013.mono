@@ -11,14 +11,14 @@ namespace QuickWeather.iOS
     public partial class AppDelegate : UIApplicationDelegate
     {
         UIWindow window;
-        MyViewController viewController;
+        MainViewController _viewViewController;
 
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             window = new UIWindow(UIScreen.MainScreen.Bounds);
 
-            viewController = new MyViewController();
-            window.RootViewController = viewController;
+            _viewViewController = new MainViewController();
+            window.RootViewController = _viewViewController;
 
             window.MakeKeyAndVisible();
 

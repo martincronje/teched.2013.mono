@@ -80,12 +80,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyViewController.cs" />
+    <Compile Include="MainViewController.cs" />
     <BundleResource Include="Resources\Default.png" />
     <BundleResource Include="Resources\Default@2x.png" />
     <BundleResource Include="Resources\Default-568h@2x.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\QuickWeather.Core\QuickWeather.Core.iOS.csproj">
+      <Project>{06262452-7ECA-4292-8602-A4195F2C75F3}</Project>
+      <Name>QuickWeather.Core.iOS</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
