@@ -1,4 +1,4 @@
-Creating Cross-Platform Mobile Applications with .NET and Mono
+Creating Cross-Platform Mobile Apps with .NET and Mono
 ======================
 _TechEd Africa 2013 Session DEV303_
 
