@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -96,14 +96,13 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="HelloWorld_iOSViewController.cs" />
-    <Compile Include="HelloWorld_iOSViewController.designer.cs">
-      <DependentUpon>HelloWorld_iOSViewController.cs</DependentUpon>
+    <Compile Include="HelloWorldViewController.cs" />
+    <Compile Include="HelloWorldViewController.designer.cs">
+      <DependentUpon>HelloWorldViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <InterfaceDefinition Include="HelloWorld_iOSViewController_iPhone.xib" />
-    <InterfaceDefinition Include="HelloWorld_iOSViewController_iPad.xib" />
+    <InterfaceDefinition Include="HelloWorldViewController.xib" />
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
 </Project>

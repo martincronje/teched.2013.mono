@@ -1,8 +1,4 @@
-using System;
-
 using Android.App;
-using Android.Content;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
@@ -13,26 +9,29 @@ namespace HelloWorld.Android
 	[Activity (Label = "Hello World", MainLauncher = true)]
 	public class Activity1 : Activity
 	{
-
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 
 			SetContentView (Resource.Layout.Main);
 
-			RelativeLayout layout = (RelativeLayout)FindViewById(Resource.Id.layout);
+			var layout = (RelativeLayout)FindViewById(Resource.Id.layout);
 
-			ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
+			var layoutParams = new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WrapContent, 
+                ViewGroup.LayoutParams.WrapContent)
+			    {
+			        Width = 300,
+			        Height = 30
+			    };
 
-			layoutParams.Width = 300;
-			layoutParams.Height = 30;
+		    var textView = new TextView(this)
+		        {
+		            Text = "Hello TechEd 2013",
+                    LayoutParameters = layoutParams
+		        };
 
-			TextView textView = new TextView(this);
-
-			textView.Text = "Hello TechEd 2013";
-
-			textView.SetTextColor(Color.Red);
-			textView.LayoutParameters = layoutParams;
+		    textView.SetTextColor(Color.Red);
 
 			layout.AddView(textView);
 		}

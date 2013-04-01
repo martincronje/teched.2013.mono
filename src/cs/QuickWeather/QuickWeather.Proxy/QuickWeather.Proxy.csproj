@@ -40,17 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forecast\Forecast.cs" />
-    <Compile Include="Forecast\ForecastDate.cs" />
-    <Compile Include="Forecast\ForecastResponse.cs" />
-    <Compile Include="Forecast\Precipitation.cs" />
-    <Compile Include="Forecast\ResponseInfo.cs" />
-    <Compile Include="Forecast\SimpleForecast.cs" />
-    <Compile Include="Forecast\SimpleForecastDay.cs" />
-    <Compile Include="Forecast\Temperature.cs" />
-    <Compile Include="Forecast\TextForecast.cs" />
-    <Compile Include="Forecast\TextForecastDay.cs" />
-    <Compile Include="Location\LocationResponse.cs" />
+    <Compile Include="Proxy\Forecast\Forecast.cs" />
+    <Compile Include="Proxy\Forecast\ForecastDate.cs" />
+    <Compile Include="Proxy\Forecast\ForecastResponse.cs" />
+    <Compile Include="Proxy\Forecast\Precipitation.cs" />
+    <Compile Include="Proxy\Forecast\ResponseInfo.cs" />
+    <Compile Include="Proxy\Forecast\SimpleForecast.cs" />
+    <Compile Include="Proxy\Forecast\SimpleForecastDay.cs" />
+    <Compile Include="Proxy\Forecast\Temperature.cs" />
+    <Compile Include="Proxy\Forecast\TextForecast.cs" />
+    <Compile Include="Proxy\Forecast\TextForecastDay.cs" />
+    <Compile Include="Proxy\Location\Location.cs" />
+    <Compile Include="Proxy\Location\LocationResponse.cs" />
+    <Compile Include="Proxy\Location\OfficialWeatherStation.cs" />
+    <Compile Include="Proxy\Location\UnofficialWeatherStation.cs" />
+    <Compile Include="Proxy\Location\WeatherStations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
