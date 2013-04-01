@@ -9,7 +9,7 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>QuickWeather.Core.Android</RootNamespace>
+    <RootNamespace>QuickWeather.Core</RootNamespace>
     <AssemblyName>QuickWeather.Core.Android</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
@@ -47,6 +47,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GeoLocator.cs" />
+    <Compile Include="Proxy\Forecast\Forecast.cs" />
+    <Compile Include="Proxy\Forecast\ForecastDate.cs" />
+    <Compile Include="Proxy\Forecast\ForecastResponse.cs" />
+    <Compile Include="Proxy\Forecast\Precipitation.cs" />
+    <Compile Include="Proxy\Forecast\ResponseInfo.cs" />
+    <Compile Include="Proxy\Forecast\SimpleForecast.cs" />
+    <Compile Include="Proxy\Forecast\SimpleForecastDay.cs" />
+    <Compile Include="Proxy\Forecast\Temperature.cs" />
+    <Compile Include="Proxy\Forecast\TextForecast.cs" />
+    <Compile Include="Proxy\Forecast\TextForecastDay.cs" />
+    <Compile Include="Proxy\Location\Location.cs" />
+    <Compile Include="Proxy\Location\LocationResponse.cs" />
+    <Compile Include="Proxy\Location\OfficialWeatherStation.cs" />
+    <Compile Include="Proxy\Location\UnofficialWeatherStation.cs" />
+    <Compile Include="Proxy\Location\WeatherStations.cs" />
+    <Compile Include="Proxy\WUndergroundProxy.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -9,10 +9,10 @@ namespace QuickWeather.Core.Proxy.Forecast
         public string Conditions { get; set; }
         public string Icon { get; set; }
         public string ProbabilityOfPrecipitation { get; set; }
-        public Precipitation QpfAllDay { get; set; }
+        public Precipitation QpfAllday { get; set; }
         public Precipitation QpfDay { get; set; }
         public Precipitation QpfNight { get; set; }
-        public Precipitation SnowAllDay { get; set; }
+        public Precipitation SnowAllday { get; set; }
         public Precipitation SnowDay { get; set; }
         public Precipitation SnowNight { get; set; }
         public int AveHumidity { get; set; }

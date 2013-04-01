@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MonoTouch.UIKit;
 using System.Drawing;
-using QuickWeather.Core;
+using QuickWeather.Core.Proxy;
 
 namespace QuickWeather.iOS
 {
@@ -28,7 +28,7 @@ namespace QuickWeather.iOS
         {
             base.ViewWillAppear(animated);
 
-            var proxy = new WeatherUndergroundProxy();
+            var proxy = new WUndergroundProxy();
 
             var stations = proxy.LookupStations("37.776289", "-122.395234");
 

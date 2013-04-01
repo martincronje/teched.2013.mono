@@ -24,7 +24,7 @@ namespace QuickWeather.Core.Tests.Proxy
             foreach (var day in textForecast.ForecastDay)
             {
                 Assert.AreNotEqual(0, day.Title.Length);
-                Assert.AreNotEqual(0, day.FctTextMetric.Length);
+                Assert.AreNotEqual(0, day.FcttextMetric.Length);
                 Assert.AreNotEqual(0, day.Icon.Length);
             }
         }
@@ -48,11 +48,11 @@ namespace QuickWeather.Core.Tests.Proxy
                 Assert.IsNotNull(day.High);
                 Assert.IsNotNull(day.Low);
 
-                Assert.IsNotNull(day.QpfAllDay);
+                Assert.IsNotNull(day.QpfAllday);
                 Assert.IsNotNull(day.QpfDay);
                 Assert.IsNotNull(day.QpfNight);
 
-                Assert.IsNotNull(day.SnowAllDay);
+                Assert.IsNotNull(day.SnowAllday);
                 Assert.IsNotNull(day.SnowDay);
                 Assert.IsNotNull(day.SnowNight);
 

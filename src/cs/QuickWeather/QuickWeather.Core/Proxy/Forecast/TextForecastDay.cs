@@ -7,6 +7,6 @@ namespace QuickWeather.Core.Proxy.Forecast
         public uint Period { get; set; }
         public string Icon { get; set; }
         public string Title { get; set; }
-        public string FctTextMetric { get; set; }
+        public string FcttextMetric { get; set; }
     }
 }

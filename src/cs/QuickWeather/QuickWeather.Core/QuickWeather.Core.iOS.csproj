@@ -91,7 +91,7 @@
     <Compile Include="Proxy\Location\OfficialWeatherStation.cs" />
     <Compile Include="Proxy\Location\UnofficialWeatherStation.cs" />
     <Compile Include="Proxy\Location\WeatherStations.cs" />
-    <Compile Include="WeatherUndergroundProxy.cs" />
+    <Compile Include="Proxy\WUndergroundProxy.cs" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

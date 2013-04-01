@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System.Linq;
+using NUnit.Framework;
+using QuickWeather.Core.Proxy;
 
 namespace QuickWeather.Core.IntegrationTests
 {
@@ -8,14 +10,34 @@ namespace QuickWeather.Core.IntegrationTests
         [Test]
         public void ShouldReturnStationsCloseToLongLat()
         {
-            var proxy = new WeatherUndergroundProxy();
-
-            var actual = proxy.LookupStations( "37.776289", "-122.395234");
+            var proxy = new WUndergroundProxy();
+            var actual = proxy.LookupStations( "-25.7940","28.2034");
 
             Assert.IsNotNull(actual);
             Assert.Greater(actual.NearbyWeatherStations.Airport.Station.Count, 0);
+        }
 
-            //http://api.wunderground.com/api/1ee1456e1469d243/geolookup/q/37.776289,-122.395234.json
+        [Test]
+        public void ShouldReturnWeatherForecastForLatLong()
+        {
+            var proxy = new WUndergroundProxy();
+            var actual = proxy.LookupForecast("-25.7940", "28.2034");
+
+            Assert.IsNotNull(actual);
+            Assert.Greater(actual.SimpleForecast.ForecastDay.Count, 0);
+        }
+
+        [Test]
+        public void ShouldReturnWeatherForecastForLatLong_AsRetrunedFromGeoLookup()
+        {
+            var proxy = new WUndergroundProxy();
+
+            var stations = proxy.LookupStations("-25.7940", "28.2034");
+            var station = stations.NearbyWeatherStations.Airport.Station.First();
+            var actual = proxy.LookupForecast(station.Lat, station.Lon);
+
+            Assert.IsNotNull(actual);
+            Assert.Greater(actual.SimpleForecast.ForecastDay.Count, 0);
         }
     }
 }
