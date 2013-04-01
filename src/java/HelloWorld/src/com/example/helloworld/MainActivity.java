@@ -23,7 +23,8 @@ public class MainActivity extends Activity {
         textView.setText("Hello TechEd 2013!");
         textView.setTextColor(Color.RED);
         
-        LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, 
+        		                                     LayoutParams.WRAP_CONTENT);
         
         layoutParams.height = 30;
         layoutParams.width = 200;
@@ -39,5 +40,4 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-    
 }
