@@ -6,8 +6,6 @@ using RestSharp;
 
 namespace QuickWeather.Core.Proxy
 {
-    
-    
     public class WUndergroundProxyCallback<T>
     {
         public WUndergroundProxyCallback(Action<T> onData, Action<Exception> onError)
@@ -43,7 +41,7 @@ namespace QuickWeather.Core.Proxy
             });
         }
 
-        public void LookupForecast(string latitude, string longitude, WUndergroundProxyCallback<Forecast.Forecast> callback)
+        public void LookupForecastAsync(string latitude, string longitude, WUndergroundProxyCallback<Forecast.Forecast> callback)
         {
             var path = string.Format("forecast/q/{0},{1}.json", latitude, longitude);
             var request = new RestRequest(path, Method.GET);
@@ -60,7 +58,7 @@ namespace QuickWeather.Core.Proxy
 
         public Forecast.Forecast LookupForecast(string latitude, string longitude)
         {
-            return LookupSync<Forecast.Forecast>(callback => LookupForecast(latitude, longitude, callback));
+            return LookupSync<Forecast.Forecast>(callback => LookupForecastAsync(latitude, longitude, callback));
         }
 
         public Location.Location LookupStations(string latitude, string longitude)

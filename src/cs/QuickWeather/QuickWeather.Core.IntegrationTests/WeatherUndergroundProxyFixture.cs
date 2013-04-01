@@ -11,7 +11,7 @@ namespace QuickWeather.Core.IntegrationTests
         public void ShouldReturnStationsCloseToLongLat()
         {
             var proxy = new WUndergroundProxy();
-            var actual = proxy.LookupStations( "-25.7940","28.2034");
+            var actual = proxy.LookupStations("-25.7940", "28.2034");
 
             Assert.IsNotNull(actual);
             Assert.Greater(actual.NearbyWeatherStations.Airport.Station.Count, 0);
