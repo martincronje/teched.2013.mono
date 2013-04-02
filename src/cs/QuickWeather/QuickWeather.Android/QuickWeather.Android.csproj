@@ -69,6 +69,15 @@
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\Icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QuickWeather.Core\QuickWeather.Core.Android.csproj">
+      <Project>{2C6020E7-3211-435C-81FE-F7C0BD88E7CC}</Project>
+      <Name>QuickWeather.Core.Android</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.

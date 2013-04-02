@@ -20,7 +20,6 @@ namespace QuickWeather.Core.Tests.Proxy
             Assert.AreEqual(8, textForecast.ForecastDay.Count);
             Assert.AreEqual("2:00 PM PDT", textForecast.Date);
 
-
             foreach (var day in textForecast.ForecastDay)
             {
                 Assert.AreNotEqual(0, day.Title.Length);
