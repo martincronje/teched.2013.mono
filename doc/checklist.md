@@ -10,5 +10,7 @@
 	2. Change to presentation mode 
 	3. Test iPhone, Android and Windows Phone Emulator
 	4. Run HelloWorld demos from Visual Studio
+	5. Start Android Emulator
+	6. Start Telnet and Connect to Android Emulator
 
 Make repository public after session
