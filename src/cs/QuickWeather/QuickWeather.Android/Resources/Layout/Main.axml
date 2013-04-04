@@ -3,11 +3,39 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    >
-<Button  
-    android:id="@+id/MyButton"
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/Hello"
-    />
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:id="@+id/LinearLayout">
+    <TextView
+        android:text="Coordinates:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/coordTextView"
+        android:height="50px"
+        android:paddingTop="5px"
+        android:paddingLeft="5px" />
+    <TextView
+        android:text="Weather Station: "
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/stationTextView"
+        android:height="50px"
+        android:paddingTop="5px"
+        android:paddingLeft="5px" />
+    <TextView
+        android:text="Weather: "
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/weatherTextView"
+        android:height="50px"
+        android:paddingTop="5px"
+        android:paddingLeft="5px" />
+    <Button
+        android:text="Fetch"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button" />
 </LinearLayout>

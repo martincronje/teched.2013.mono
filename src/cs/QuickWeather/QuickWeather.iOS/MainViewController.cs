@@ -1,39 +1,46 @@
 using System;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using MonoTouch.UIKit;
 using System.Drawing;
-using QuickWeather.Core.Proxy;
-using QuickWeather.Core.Proxy.Forecast;
-using QuickWeather.Core.Proxy.Location;
-using Xamarin.Geolocation;
+using QuickWeather.Core.Model;
+using QuickWeather.Core.ViewController;
 
 namespace QuickWeather.iOS
 {
-    public class MainViewController : UIViewController
+    public class MainViewController : UIViewController, ICurrentLocationWeatherView
     {
-        private UILabel _label;
-        private CancellationTokenSource _cancelSource;
-        private Geolocator _geolocator;
-        private string _latitude;
-        private string _longitude;
-        private readonly TaskScheduler _scheduler = TaskScheduler.FromCurrentSynchronizationContext();
+        private CurrentLocationWeatherViewController _viewController;
+        private UILabel _coordLabel;
+        private UILabel _stationLabel;
+        private UILabel _weatherLabel;
+        private UIButton _button;
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
+            _viewController = new CurrentLocationWeatherViewController(this);
+
             SetupView();
-            SetupLabel();
-            SetupGeo();
+            SetupLabels();
         }
 
-        private void SetupLabel()
+        private void SetupLabels()
         {
-            _label = new UILabel(new RectangleF(0, 0, 300, 30));
+            _coordLabel = new UILabel(new RectangleF(10, 0, 300, 30));
+            _stationLabel = new UILabel(new RectangleF(10, 30, 300, 30));
+            _weatherLabel = new UILabel(new RectangleF(10, 60, 300, 30));
 
-            View.AddSubview(_label);
+            _button = new UIButton(UIButtonType.RoundedRect);
+
+            _button.Frame = new RectangleF(60, 90, 200, 40);
+            _button.SetTitle("Fetch", UIControlState.Normal);
+            _button.TouchUpInside += (sender, args) => _viewController.FetchPosition();
+
+            View.AddSubview(_coordLabel);
+            View.AddSubview(_stationLabel);
+            View.AddSubview(_weatherLabel);
+            View.AddSubview(_button);
         }
 
         private void SetupView()
@@ -43,96 +50,43 @@ namespace QuickWeather.iOS
             View.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
         }
 
-        private void SetupGeo()
+        public void DisplayCurrentLocation(GeoLocation geoLocation)
         {
-            if (this._geolocator != null)
-                return;
-
-            this._geolocator = new Geolocator {DesiredAccuracy = 50};
-            //    this._geolocator.PositionError += OnListeningError;
-            //    this._geolocator.PositionChanged += OnPositionChanged;
+            InvokeOnMainThread(() =>
+            {
+                _coordLabel.Text = string.Format("Coordinates {0}", geoLocation.ToFriendlyString());
+            });
+            _viewController.FetchLocations(geoLocation);
         }
 
-        public override void ViewWillAppear(bool animated)
+        public void DisplayClosestWeatherStations(OfficialStations stations)
         {
-            base.ViewWillAppear(animated);
+            var station = stations.First();
 
-            GetPosition();
+            InvokeOnMainThread(()=> 
+            {
+                    _stationLabel.Text = string.Format("Station: {0}, {1}", station.City, station.Country);
+            });
+
+            _viewController.FetchWeather(station.Location);
         }
 
-        private void FetchLocations()
+        public void DisplayForecast(ForecastDays forecast)
         {
-            var proxy = new WUndergroundProxy();
+            InvokeOnMainThread(() =>
+            {
+                var forecastDay = forecast.First();
 
-            Action<Location> onData =
-                location =>
-                    {
-                        InvokeOnMainThread(delegate
-                            {
-                                _label.Text = location.NearbyWeatherStations.Airport.Station.First().City;
-                            });
-                        FetchWeather();
-                    };
-
-            var callback = new WUndergroundProxyCallback<Location>(onData, HandleError);
-            proxy.LookupStationsAsync(_latitude, _longitude, callback);
+                _weatherLabel.Text =  string.Format("Today High: {0}", forecastDay.High);
+            });
         }
 
-        private void FetchWeather()
+        public void DisplayError(Exception exception)
         {
-            var proxy = new WUndergroundProxy();
-
-            var callback = new WUndergroundProxyCallback<Forecast>(HandleForecastReceived, HandleError);
-            proxy.LookupForecastAsync(_latitude, _longitude, callback);
-        }
-
-        private void HandleForecastReceived(Forecast forecast)
-        {
-            InvokeOnMainThread(delegate
-                {
-                    var forecastDay = forecast.SimpleForecast.ForecastDay.FirstOrDefault();
-
-                    if (forecastDay != null)
-                        _label.Text = _label.Text + " High: " + forecastDay.High.Celsius;
-                });
-        }
-
-        private void HandleError(Exception exception)
-        {
-            InvokeOnMainThread(delegate
-                {
-                    _label.Text = exception.Message;
-                });
-        }
-
-
-        private void GetPosition()
-        {
-            this._cancelSource = new CancellationTokenSource();
-
-            this._geolocator.GetPositionAsync(timeout: 10000, cancelToken: this._cancelSource.Token,
-                                              includeHeading: true)
-                .ContinueWith(t =>
-                    {
-                        if (t.IsFaulted)
-                        {
-
-                            _label.Text = ((GeolocationException) t.Exception.InnerException).Error.ToString();
-                        }
-                        else if (t.IsCanceled)
-                        {
-
-                            _label.Text = "Canceled";
-                        }
-                        else
-                        {
-                            _label.Text = t.Result.Timestamp.ToString("G");
-                            _latitude = t.Result.Latitude.ToString("N4");
-                            _longitude = t.Result.Longitude.ToString("N4");
-                            FetchLocations();
-                        }
-
-                    }, _scheduler);
+            InvokeOnMainThread(() =>
+            {
+                _coordLabel.Text = string.Format("Error: {0}", exception.Message);
+            });
         }
     }
 }

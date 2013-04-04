@@ -43,7 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GeoLocator.cs" />
+    <Compile Include="Model\GeoLocation.cs" />
+    <Compile Include="Model\ForecastDay.cs" />
+    <Compile Include="Model\Station.cs" />
+    <Compile Include="ServiceCallback.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proxy\Forecast\Forecast.cs" />
     <Compile Include="Proxy\Forecast\ForecastDate.cs" />

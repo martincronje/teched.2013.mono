@@ -8,7 +8,7 @@ namespace QuickWeather.Core.Proxy.Forecast
         public Temperature Low { get; set; }
         public string Conditions { get; set; }
         public string Icon { get; set; }
-        public string ProbabilityOfPrecipitation { get; set; }
+        public string Pop { get; set; }
         public Precipitation QpfAllday { get; set; }
         public Precipitation QpfDay { get; set; }
         public Precipitation QpfNight { get; set; }

@@ -26,6 +26,11 @@ namespace QuickWeather.Android
 		
 		public static void UpdateIdValues()
 		{
+			QuickWeather.Core.Resource.Drawable.monoandroidsplash = QuickWeather.Android.Resource.Drawable.monoandroidsplash;
+			QuickWeather.Core.Resource.Layout.monoandroidsplash = QuickWeather.Android.Resource.Layout.monoandroidsplash;
+			QuickWeather.Core.Resource.String.ApplicationName = QuickWeather.Android.Resource.String.ApplicationName;
+			QuickWeather.Core.Resource.String.Hello = QuickWeather.Android.Resource.String.Hello;
+			QuickWeather.Core.Resource.Style.Mono_Android_Theme_Splash = QuickWeather.Android.Resource.Style.Mono_Android_Theme_Splash;
 		}
 		
 		public partial class Attribute
@@ -54,7 +59,19 @@ namespace QuickWeather.Android
 		{
 			
 			// aapt resource value: 0x7f060000
-			public const int MyButton = 2131099648;
+			public const int LinearLayout = 2131099648;
+			
+			// aapt resource value: 0x7f060004
+			public const int button = 2131099652;
+			
+			// aapt resource value: 0x7f060001
+			public const int coordTextView = 2131099649;
+			
+			// aapt resource value: 0x7f060002
+			public const int stationTextView = 2131099650;
+			
+			// aapt resource value: 0x7f060003
+			public const int weatherTextView = 2131099651;
 			
 			private Id()
 			{

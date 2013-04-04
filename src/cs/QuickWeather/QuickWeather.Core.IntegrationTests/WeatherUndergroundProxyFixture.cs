@@ -11,7 +11,7 @@ namespace QuickWeather.Core.IntegrationTests
         public void ShouldReturnStationsCloseToLongLat()
         {
             var proxy = new WUndergroundProxy();
-            var actual = proxy.LookupStations("-25.7940", "28.2034");
+            var actual = proxy.LookupStations(-25.7940, 28.2034);
 
             Assert.IsNotNull(actual);
             Assert.Greater(actual.NearbyWeatherStations.Airport.Station.Count, 0);
@@ -21,7 +21,7 @@ namespace QuickWeather.Core.IntegrationTests
         public void ShouldReturnWeatherForecastForLatLong()
         {
             var proxy = new WUndergroundProxy();
-            var actual = proxy.LookupForecast("-25.7940", "28.2034");
+            var actual = proxy.LookupForecast(-25.7940, 28.2034);
 
             Assert.IsNotNull(actual);
             Assert.Greater(actual.SimpleForecast.ForecastDay.Count, 0);
@@ -32,9 +32,9 @@ namespace QuickWeather.Core.IntegrationTests
         {
             var proxy = new WUndergroundProxy();
 
-            var stations = proxy.LookupStations("-25.7940", "28.2034");
+            var stations = proxy.LookupStations(-25.7940, 28.2034);
             var station = stations.NearbyWeatherStations.Airport.Station.First();
-            var actual = proxy.LookupForecast(station.Lat, station.Lon);
+            var actual = proxy.LookupForecast(double.Parse(station.Lat), double.Parse(station.Lon));
 
             Assert.IsNotNull(actual);
             Assert.Greater(actual.SimpleForecast.ForecastDay.Count, 0);

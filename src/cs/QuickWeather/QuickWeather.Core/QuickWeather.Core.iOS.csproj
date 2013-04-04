@@ -74,7 +74,9 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="GeoLocator.cs" />
+    <Compile Include="Model\ForecastDay.cs" />
+    <Compile Include="Model\GeoLocation.cs" />
+    <Compile Include="Model\Station.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proxy\Forecast\Forecast.cs" />
     <Compile Include="Proxy\Forecast\ForecastDate.cs" />
@@ -92,7 +94,9 @@
     <Compile Include="Proxy\Location\UnofficialWeatherStation.cs" />
     <Compile Include="Proxy\Location\WeatherStations.cs" />
     <Compile Include="Proxy\WUndergroundProxy.cs" />
+    <Compile Include="ServiceCallback.cs" />
     <Compile Include="ViewController\CurrentLocationWeatherViewController.cs" />
+    <Compile Include="ViewController\CurrentLocationWeatherViewController.General.cs" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

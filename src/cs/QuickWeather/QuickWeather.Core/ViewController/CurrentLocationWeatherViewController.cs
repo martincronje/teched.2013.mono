@@ -1,59 +1,53 @@
 ﻿using System;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using QuickWeather.Core.Model;
 using QuickWeather.Core.Proxy;
-using QuickWeather.Core.Proxy.Forecast;
-using QuickWeather.Core.Proxy.Location;
 using Xamarin.Geolocation;
 
 namespace QuickWeather.Core.ViewController
 {
     public interface ICurrentLocationWeatherView
     {
-        void DisplayCurrentLocation(double latitude, double longitude, DateTimeOffset timestamp);
-        void DisplayClosestWeatherStations(Location location);
-        void DisplayForecast(Forecast forecast);
+        void DisplayCurrentLocation(GeoLocation geoLocation);
+        void DisplayClosestWeatherStations(OfficialStations stations);
+        void DisplayForecast(ForecastDays forecastDays);
         void DisplayError(Exception exception);
     }
 
-    public class CurrentLocationWeatherViewController
+    public partial class CurrentLocationWeatherViewController
     {
         private readonly ICurrentLocationWeatherView _view;
         private readonly Geolocator _geolocator;
         private readonly TaskScheduler _scheduler;
         private CancellationTokenSource _cancelSource;
+        private GeoLocation _currentGeoLocation;
 
-        private double _latitude;
-        private double _longitude;
-        private DateTimeOffset _timestamp;
-
-        public CurrentLocationWeatherViewController(ICurrentLocationWeatherView view)
+        public void FetchLocations(GeoLocation geoLocation)
         {
-            _view = view;
-            _scheduler = TaskScheduler.FromCurrentSynchronizationContext();
-            _geolocator = new Geolocator {DesiredAccuracy = 50};
+            var service = new WUndergroundProxy();
+            var callback = new ServiceCallback<OfficialStations>(HandleLocationsReceived, HandleError);
+            service.LookupStationsAsync(geoLocation.Latitude, geoLocation.Longitude, callback);
         }
 
-        private void FetchLocations()
+        public void FetchWeather(GeoLocation geoLocation)
         {
             var proxy = new WUndergroundProxy();
-            var callback = new WUndergroundProxyCallback<Location>(HandleLocationsReceived, HandleError);
-            proxy.LookupStationsAsync(_latitude, _longitude, callback);
+            var callback = new ServiceCallback<ForecastDays>(HandleForecastReceived, HandleError);
+            proxy.LookupForecastAsync(geoLocation.Latitude, geoLocation.Longitude, callback);
         }
 
-        private void FetchWeather()
+        public void FetchPosition()
         {
-            var proxy = new WUndergroundProxy();
-            var callback = new WUndergroundProxyCallback<Forecast>(HandleForecastReceived, HandleError);
-            proxy.LookupForecastAsync(_latitude, _longitude, callback);
-        }
+            if (!_geolocator.IsGeolocationAvailable || !_geolocator.IsGeolocationEnabled)
+            {
+                _view.DisplayError(new Exception("Geolocation Location disabled."));
+                return;
+            }
 
-        private void FetchPosition()
-        {
-            this._cancelSource = new CancellationTokenSource();
+            _cancelSource = new CancellationTokenSource();
 
-            this._geolocator.GetPositionAsync(timeout: 10000, cancelToken: this._cancelSource.Token,
+            _geolocator.GetPositionAsync(timeout: 20000, cancelToken: this._cancelSource.Token,
                                               includeHeading: true)
                 .ContinueWith(t =>
                     {
@@ -67,54 +61,29 @@ namespace QuickWeather.Core.ViewController
                         }
                         else
                         {
-                            _timestamp = t.Result.Timestamp;//.ToString("G");
-                            _latitude = t.Result.Latitude;//.ToString("N4");
-                            _longitude = t.Result.Longitude;//.ToString("N4");
-
-                            _view.DisplayCurrentLocation(_latitude, _latitude, _timestamp);
-
-                            FetchLocations();
+                            _currentGeoLocation = new GeoLocation(
+                                t.Result.Timestamp,
+                                t.Result.Latitude,
+                                t.Result.Longitude);
+                        
+                            _view.DisplayCurrentLocation(_currentGeoLocation);
                         }
 
                     }, _scheduler);
         }
 
 
-        private void HandleLocationsReceived(Location location)
+        private void HandleLocationsReceived(OfficialStations stations)
         {
-            if (location == null)
-                return;
-
-            _view.DisplayClosestWeatherStations(location);
-            //InvokeOnMainThread(delegate
-            //{
-            //    var forecastDay = forecast.SimpleForecast.ForecastDay.FirstOrDefault();
-
-            //    if (forecastDay != null)
-            //        _label.Text = _label.Text + " High: " + forecastDay.High.Celsius;
-            //});
+            _view.DisplayClosestWeatherStations(stations);
         }
-        private void HandleForecastReceived(Forecast forecast)
+        private void HandleForecastReceived(ForecastDays forecast)
         {
-            if (forecast == null)
-                return;
-
             _view.DisplayForecast(forecast);
-
-            //InvokeOnMainThread(delegate
-            //{
-            //    var forecastDay = forecast.SimpleForecast.ForecastDay.FirstOrDefault();
-
-            //    if (forecastDay != null)
-            //        _label.Text = _label.Text + " High: " + forecastDay.High.Celsius;
-            //});
         }
 
         private void HandleError(Exception exception)
         {
-            if (exception == null)
-                return;
-
             _view.DisplayError(exception);
         }
 
