@@ -78,6 +78,7 @@
     <Compile Include="AppDelegate.cs" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <BundleResource Include="Resources\meteocons-webfont.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainViewController.cs" />

@@ -99,8 +99,6 @@
     <Compile Include="ViewController\CurrentLocationWeatherViewController.General.cs" />
   </ItemGroup>
   <ItemGroup>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="RestSharp.MonoTouch">
       <HintPath>..\..\..\..\lib\RestSharp\Download\MonoTouch\RestSharp.MonoTouch.dll</HintPath>
     </Reference>
@@ -111,6 +109,9 @@
     <Reference Include="Xamarin.Mobile">
       <HintPath>..\..\..\..\lib\xamarin.mobile-0.6.3\lib\ios\Xamarin.Mobile.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
 </Project>

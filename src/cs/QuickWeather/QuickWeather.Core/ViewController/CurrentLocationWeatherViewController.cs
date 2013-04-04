@@ -39,9 +39,9 @@ namespace QuickWeather.Core.ViewController
 
         public void FetchPosition()
         {
-            if (!_geolocator.IsGeolocationAvailable || !_geolocator.IsGeolocationEnabled)
+            if (!_geolocator.IsGeolocationAvailable )
             {
-                _view.DisplayError(new Exception("Geolocation Location disabled."));
+                _view.DisplayError(new Exception("Geolocation disabled"));
                 return;
             }
 
