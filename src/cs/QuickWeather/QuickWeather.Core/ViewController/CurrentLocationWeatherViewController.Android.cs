@@ -10,7 +10,19 @@ namespace QuickWeather.Core.ViewController
         {
             _view = view;
             _scheduler = TaskScheduler.FromCurrentSynchronizationContext();
-            _geolocator = new Geolocator(context) {DesiredAccuracy = 50};
+            _geolocator = new Geolocator(context) { DesiredAccuracy = 50 };
+            _geolocator.PositionError += OnListeningError;
+            _geolocator.PositionChanged += OnPositionChanged;
+        }
+
+        private static void OnPositionChanged(object sender, PositionEventArgs e)
+        {
+            
+        }
+
+        private static void OnListeningError(object sender, PositionErrorEventArgs e)
+        {
+            
         }
     }
 }

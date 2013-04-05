@@ -156,86 +156,86 @@ namespace QuickWeather.iOS
         public void DisplayForecast(ForecastDays forecast)
         {
             InvokeOnMainThread(() =>
-            {
-                var forecastDay = forecast.First();
-
-                TempHighLabel.Text = string.Format("high: {0}", forecastDay.High);
-                TempLowLabel.Text = string.Format("low: {0}", forecastDay.Low);
-
-                UIView.Animate(2, () =>
                 {
-                    if (forecastDay.High >= 30)
-                        View.BackgroundColor = UIColor.FromRGB(207, 68, 0);
-                    else if (forecastDay.High >= 24)
-                        View.BackgroundColor = UIColor.FromRGB(207, 141, 0);
-                    else if (forecastDay.High >= 21)
-                        View.BackgroundColor = UIColor.FromRGB(0, 149, 137);
-                    else if (forecastDay.High >= 15)
-                        View.BackgroundColor = UIColor.FromRGB(0, 117, 207);
-                    else if (forecastDay.High >= 10)
-                        View.BackgroundColor = UIColor.FromRGB(0, 156, 207);
-                    else
-                        View.BackgroundColor = UIColor.FromRGB(0, 195, 207);
-                        
-//Sweaty, hot weather	30+°C	85+°F
-//T-shirt & shorts weather	24°C	75°F
-//Average Room Temperature	21°C	70°F
-//Long-sleeve shirt & pants weather	15°C	60°F
-//Fleece jacket weather	10°C	50°F
-//Freezing	0°C	32°F
-//So cold you may want to reconsider going outside, especially with children	-29°C	-20°F
+                    var forecastDay = forecast.First();
 
-                    switch (forecastDay.Icon)
-                    {
-                        case "chanceflurries":
-                        case "chancesleet":
-                        case "flurries":
-                        case "sleet":
-                            Icon.Text = "X";
-                            break;
-                        case "chancerain":
-                        case "rain":
-                            Icon.Text = "R";
-                            break;
-                        case "chancesnow":
-                        case "snow":
-                            Icon.Text = "W";
-                            break;
-                        case "chancetstorms":
-                        case "tstorms":
-                            Icon.Text = "O";
-                            break;
-                        case "unknown":
-                        case "sunny":
-                        case "clear":
-                            Icon.Text = "B";
-                            break;
-                        case "cloudy":
-                            Icon.Text = "Y";
-                            break;
-                        case "fog":
-                            Icon.Text = "M";
-                            break;
-                        case "hazy":
-                            Icon.Text = "J";
-                            break;
-                        case "mostlycloudy":
-                        case "partlycloudy":
-                            Icon.Text = "Y";
-                            break;
-                        case "mostlysunny":
-                        case "partlysunny":
-                            Icon.Text = "H";
-                            break;
-                    }
+                    TempHighLabel.Text = string.Format("high: {0}", forecastDay.High);
+                    TempLowLabel.Text = string.Format("low: {0}", forecastDay.Low);
+
+                    UIView.Animate(2, () =>
+                        {
+                            if (forecastDay.High >= 30)
+                                View.BackgroundColor = UIColor.FromRGB(207, 68, 0);
+                            else if (forecastDay.High >= 24)
+                                View.BackgroundColor = UIColor.FromRGB(207, 141, 0);
+                            else if (forecastDay.High >= 21)
+                                View.BackgroundColor = UIColor.FromRGB(0, 149, 137);
+                            else if (forecastDay.High >= 15)
+                                View.BackgroundColor = UIColor.FromRGB(0, 117, 207);
+                            else if (forecastDay.High >= 10)
+                                View.BackgroundColor = UIColor.FromRGB(0, 156, 207);
+                            else
+                                View.BackgroundColor = UIColor.FromRGB(0, 195, 207);
+
+                            //Sweaty, hot weather	30+°C	85+°F
+                            //T-shirt & shorts weather	24°C	75°F
+                            //Average Room Temperature	21°C	70°F
+                            //Long-sleeve shirt & pants weather	15°C	60°F
+                            //Fleece jacket weather	10°C	50°F
+                            //Freezing	0°C	32°F
+                            //So cold you may want to reconsider going outside, especially with children	-29°C	-20°F
+
+                            switch (forecastDay.Icon)
+                            {
+                                case "chanceflurries":
+                                case "chancesleet":
+                                case "flurries":
+                                case "sleet":
+                                    Icon.Text = "X";
+                                    break;
+                                case "chancerain":
+                                case "rain":
+                                    Icon.Text = "R";
+                                    break;
+                                case "chancesnow":
+                                case "snow":
+                                    Icon.Text = "W";
+                                    break;
+                                case "chancetstorms":
+                                case "tstorms":
+                                    Icon.Text = "O";
+                                    break;
+                                case "unknown":
+                                case "sunny":
+                                case "clear":
+                                    Icon.Text = "B";
+                                    break;
+                                case "cloudy":
+                                    Icon.Text = "Y";
+                                    break;
+                                case "fog":
+                                    Icon.Text = "M";
+                                    break;
+                                case "hazy":
+                                    Icon.Text = "J";
+                                    break;
+                                case "mostlycloudy":
+                                case "partlycloudy":
+                                    Icon.Text = "Y";
+                                    break;
+                                case "mostlysunny":
+                                case "partlysunny":
+                                    Icon.Text = "H";
+                                    break;
+                            }
 
 
 
-                    });
+                        });
 
 
 
-            });
+                });
         }
 
         public void DisplayError(Exception exception)
