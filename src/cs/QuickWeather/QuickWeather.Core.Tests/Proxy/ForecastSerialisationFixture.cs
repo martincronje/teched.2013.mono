@@ -57,7 +57,7 @@ namespace QuickWeather.Core.Tests.Proxy
 
                 Assert.AreNotEqual(0, day.Icon);
                 Assert.AreNotEqual(0, day.Conditions);
-                Assert.AreNotEqual(0, day.ProbabilityOfPrecipitation);
+                Assert.AreNotEqual(0, day.Pop);
 
                 Assert.AreNotEqual(0, day.AveHumidity);
                 Assert.AreNotEqual(0, day.MinHumidity);

@@ -20,21 +20,21 @@ namespace QuickWeather.Core.ViewController
         private readonly ICurrentLocationWeatherView _view;
         private readonly Geolocator _geolocator;
         private readonly TaskScheduler _scheduler;
+        private readonly IWeatherService _service;
+
         private CancellationTokenSource _cancelSource;
         private GeoLocation _currentGeoLocation;
 
         public void FetchLocations(GeoLocation geoLocation)
         {
-            var service = new WUndergroundProxy();
             var callback = new ServiceCallback<OfficialStations>(HandleLocationsReceived, HandleError);
-            service.LookupStationsAsync(geoLocation.Latitude, geoLocation.Longitude, callback);
+            _service.LookupStationsAsync(geoLocation.Latitude, geoLocation.Longitude, callback);
         }
 
         public void FetchWeather(GeoLocation geoLocation)
         {
-            var proxy = new WUndergroundProxy();
             var callback = new ServiceCallback<ForecastDays>(HandleForecastReceived, HandleError);
-            proxy.LookupForecastAsync(geoLocation.Latitude, geoLocation.Longitude, callback);
+            _service.LookupForecastAsync(geoLocation.Latitude, geoLocation.Longitude, callback);
         }
 
         public void FetchPosition()

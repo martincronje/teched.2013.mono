@@ -88,13 +88,16 @@
     <Compile Include="Proxy\Forecast\Temperature.cs" />
     <Compile Include="Proxy\Forecast\TextForecast.cs" />
     <Compile Include="Proxy\Forecast\TextForecastDay.cs" />
+    <Compile Include="Proxy\IWeatherService.cs" />
     <Compile Include="Proxy\Location\Location.cs" />
     <Compile Include="Proxy\Location\LocationResponse.cs" />
     <Compile Include="Proxy\Location\OfficialWeatherStation.cs" />
     <Compile Include="Proxy\Location\UnofficialWeatherStation.cs" />
     <Compile Include="Proxy\Location\WeatherStations.cs" />
-    <Compile Include="Proxy\WUndergroundProxy.cs" />
+    <Compile Include="Proxy\WeatherServiceStub.cs" />
+    <Compile Include="Proxy\WeatherService.cs" />
     <Compile Include="ServiceCallback.cs" />
+    <Compile Include="TinyIoC.cs" />
     <Compile Include="ViewController\CurrentLocationWeatherViewController.cs" />
     <Compile Include="ViewController\CurrentLocationWeatherViewController.General.cs" />
   </ItemGroup>
@@ -110,8 +113,6 @@
       <HintPath>..\..\..\..\lib\xamarin.mobile-0.6.3\lib\ios\Xamarin.Mobile.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
 </Project>

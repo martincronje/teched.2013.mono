@@ -1,10 +1,11 @@
 using System;
-using System.Diagnostics;
 using System.Linq;
 using MonoTouch.UIKit;
 using System.Drawing;
 using QuickWeather.Core.Model;
+using QuickWeather.Core.Proxy;
 using QuickWeather.Core.ViewController;
+using TinyIoC;
 
 namespace QuickWeather.iOS
 {
@@ -21,24 +22,21 @@ namespace QuickWeather.iOS
         {
             base.ViewDidLoad();
 
-            _viewController = new CurrentLocationWeatherViewController(this);
+            var service = TinyIoCContainer.Current.Resolve<IWeatherService>();
+
+            _viewController = new CurrentLocationWeatherViewController(this, service);
 
             SetupView();
             SetupButton();
             SetupIcon();
             SetupLabels();
             SetupStation();
-
-            //foreach (var s1 in UIFont.FamilyNames.OrderBy(c => c))
-            //{
-            //    Debug.WriteLine("{0} => {1}", s1, String.Join(", ", UIFont.FontNamesForFamilyName(s1)));
-            //}
         }
 
         private void SetupLabels()
         {
 
-            TempLowLabel = new UILabel()
+            TempLowLabel = new UILabel
                 {
                     TextColor = UIColor.White,
                     BackgroundColor = UIColor.Clear,
@@ -53,7 +51,7 @@ namespace QuickWeather.iOS
             View.AddSubview(TempLowLabel);
 
 
-            TempHighLabel = new UILabel()
+            TempHighLabel = new UILabel
                 {
                     TextColor = UIColor.White,
                     BackgroundColor = UIColor.Clear,
@@ -84,14 +82,17 @@ namespace QuickWeather.iOS
 
         private void SetupIcon()
         {
-            Icon = new UILabel();
+            var frame = new RectangleF(10, ((View.Frame.Height - View.Frame.Width)/2) - 30, View.Frame.Width - 20, View.Frame.Width);
+            Icon = new UILabel
+                {
+                    Frame = frame,
+                    TextColor = UIColor.White,
+                    BackgroundColor = UIColor.Clear,
+                    Font = UIFont.FromName("Meteocons", 320.0f),
+                    Text = "B",
+                    AdjustsFontSizeToFitWidth = true
+                };
 
-            Icon.Frame = new RectangleF(10, ((View.Frame.Height - View.Frame.Width)/2) - 30, View.Frame.Width - 20, View.Frame.Width);
-            Icon.TextColor = UIColor.White;
-            Icon.BackgroundColor = UIColor.Clear;
-            Icon.Font = UIFont.FromName("Meteocons", 320.0f);
-            Icon.Text = "B";
-            Icon.AdjustsFontSizeToFitWidth = true;
             Button.AutoresizingMask = UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleBottomMargin;
 
             View.AddSubview(Icon);
@@ -101,7 +102,9 @@ namespace QuickWeather.iOS
         {
             Button = new UIButton(UIButtonType.Custom);
 
-            Button.Frame = new RectangleF(0, View.Frame.Height - 60, View.Frame.Width, 60);
+            var frame = new RectangleF(0, View.Frame.Height - 60, View.Frame.Width, 60);
+            Button.Frame = frame;
+
             Button.AutoresizingMask = UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleWidth;
             Button.TouchDown += (sender, args) =>
             {
@@ -138,7 +141,9 @@ namespace QuickWeather.iOS
             {
                 StationLabel.Text = string.Format("searching station for {0}", geoLocation.ToFriendlyString());
             });
-            _viewController.FetchLocations(geoLocation);
+
+            _viewController.FetchWeather(geoLocation);
+            //            _viewController.FetchLocations(geoLocation);
         }
 
         public void DisplayClosestWeatherStations(OfficialStations stations)

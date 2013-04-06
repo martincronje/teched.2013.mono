@@ -4,8 +4,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using QuickWeather.Core.Model;
-using QuickWeather.Core.Proxy.Forecast;
-using QuickWeather.Core.Proxy.Location;
 using QuickWeather.Core.ViewController;
 
 namespace QuickWeather.WindowsPhone

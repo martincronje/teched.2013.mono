@@ -42,8 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WeatherServiceAdapterFixture.cs" />
-    <Compile Include="WeatherUndergroundProxyFixture.cs" />
+    <Compile Include="WUndergroundProxyFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

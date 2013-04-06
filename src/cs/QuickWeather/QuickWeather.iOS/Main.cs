@@ -1,4 +1,6 @@
 ﻿using MonoTouch.UIKit;
+using QuickWeather.Core.Proxy;
+using TinyIoC;
 
 namespace QuickWeather.iOS
 {
@@ -6,6 +8,7 @@ namespace QuickWeather.iOS
     {
         static void Main(string[] args)
         {
+            TinyIoCContainer.Current.Register<IWeatherService>(new WeatherServiceStub());
             UIApplication.Main(args, null, "AppDelegate");
         }
     }

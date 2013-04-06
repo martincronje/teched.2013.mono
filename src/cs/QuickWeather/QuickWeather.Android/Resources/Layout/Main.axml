@@ -33,6 +33,12 @@
         android:height="50px"
         android:paddingTop="5px"
         android:paddingLeft="5px" />
+    <TextView
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1" />
     <Button
         android:text="Fetch"
         android:layout_width="fill_parent"
