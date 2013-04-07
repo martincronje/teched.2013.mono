@@ -121,6 +121,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Fonts\meteocons-webfont.ttf" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>

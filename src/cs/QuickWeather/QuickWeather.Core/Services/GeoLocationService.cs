@@ -4,6 +4,10 @@ using System.Threading.Tasks;
 using QuickWeather.Core.Model;
 using Xamarin.Geolocation;
 
+#if ANDROID
+using Android.Content;
+#endif
+
 namespace QuickWeather.Core.Services
 {
     internal class GeoLocationService
@@ -12,11 +16,19 @@ namespace QuickWeather.Core.Services
         private readonly TaskScheduler _scheduler;
         private CancellationTokenSource _cancelSource;
 
-        public GeoLocationService()
+#if ANDROID
+        public GeoLocationService(Context context)
         {
-            _geolocator = new Geolocator { DesiredAccuracy = 50 };
+            _geolocator = new Geolocator(context) { DesiredAccuracy = 50 };
             _scheduler = TaskScheduler.FromCurrentSynchronizationContext();
         }
+#else
+        public GeoLocationService()
+        {
+            _geolocator = new Geolocator() { DesiredAccuracy = 50 };
+            _scheduler = TaskScheduler.FromCurrentSynchronizationContext();
+        }
+#endif
 
         public void GetPositionAsync(ServiceCallback<GeoLocation> callback)
         {

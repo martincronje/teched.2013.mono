@@ -59,21 +59,20 @@ namespace QuickWeather.Core.Services
 
         private static bool IsDubai(double latitude, double longitude)
         {
-            return DoubleEquals(latitude, 25) && DoubleEquals(longitude, 55);
+            return DoubleInRange(latitude, 22, 28) && DoubleInRange(longitude, 52, 58);
         }
         private static bool IsKiev(double latitude, double longitude)
         {
-            return DoubleEquals(latitude, 50) && DoubleEquals(longitude, 31);
+            return DoubleInRange(latitude, 47, 53) && DoubleInRange(longitude, 28, 34);
         }
         private static bool IsLanseria(double latitude, double longitude)
         {
-            return DoubleEquals(latitude, -26) && DoubleEquals(longitude, 28);
+            return DoubleInRange(latitude, -29, -23) && DoubleInRange(longitude, 25, 31);
         }
 
-        private static bool DoubleEquals(double left, double right)
+        private static bool DoubleInRange(double left, double right, double right2)
         {
-            const double epsilon = 0.1;
-            return Math.Abs(left - right) < epsilon;
+            return left > right && left < right2;
         }
 
         private OfficialStations LookupStationKiev(double latitude, double longitude)

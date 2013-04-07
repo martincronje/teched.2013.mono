@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: Android.Runtime.ResourceDesignerAttribute("QuickWeather.Android.Resource", IsApplication=true)]
+[assembly: Android.Runtime.ResourceDesignerAttribute("QuickWeather.UI.Resource", IsApplication=true)]
 
-namespace QuickWeather.Android
+namespace QuickWeather.UI
 {
 	
 	
@@ -26,11 +26,11 @@ namespace QuickWeather.Android
 		
 		public static void UpdateIdValues()
 		{
-			QuickWeather.Core.Resource.Drawable.monoandroidsplash = QuickWeather.Android.Resource.Drawable.monoandroidsplash;
-			QuickWeather.Core.Resource.Layout.monoandroidsplash = QuickWeather.Android.Resource.Layout.monoandroidsplash;
-			QuickWeather.Core.Resource.String.ApplicationName = QuickWeather.Android.Resource.String.ApplicationName;
-			QuickWeather.Core.Resource.String.Hello = QuickWeather.Android.Resource.String.Hello;
-			QuickWeather.Core.Resource.Style.Mono_Android_Theme_Splash = QuickWeather.Android.Resource.Style.Mono_Android_Theme_Splash;
+			QuickWeather.Core.Resource.Drawable.monoandroidsplash = QuickWeather.UI.Resource.Drawable.monoandroidsplash;
+			QuickWeather.Core.Resource.Layout.monoandroidsplash = QuickWeather.UI.Resource.Layout.monoandroidsplash;
+			QuickWeather.Core.Resource.String.ApplicationName = QuickWeather.UI.Resource.String.ApplicationName;
+			QuickWeather.Core.Resource.String.Hello = QuickWeather.UI.Resource.String.Hello;
+			QuickWeather.Core.Resource.Style.Mono_Android_Theme_Splash = QuickWeather.UI.Resource.Style.Mono_Android_Theme_Splash;
 		}
 		
 		public partial class Attribute
@@ -58,23 +58,35 @@ namespace QuickWeather.Android
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060000
-			public const int LinearLayout = 2131099648;
+			// aapt resource value: 0x7f060009
+			public const int Button = 2131099657;
 			
-			// aapt resource value: 0x7f060005
-			public const int button = 2131099653;
-			
-			// aapt resource value: 0x7f060001
-			public const int coordTextView = 2131099649;
+			// aapt resource value: 0x7f060007
+			public const int Icon = 2131099655;
 			
 			// aapt resource value: 0x7f060002
-			public const int stationTextView = 2131099650;
+			public const int TextViewMessage = 2131099650;
+			
+			// aapt resource value: 0x7f060005
+			public const int TextViewTempHigh = 2131099653;
 			
 			// aapt resource value: 0x7f060004
-			public const int textView1 = 2131099652;
+			public const int TextViewTempLow = 2131099652;
+			
+			// aapt resource value: 0x7f060000
+			public const int tableLayout1 = 2131099648;
+			
+			// aapt resource value: 0x7f060001
+			public const int tableRow0 = 2131099649;
 			
 			// aapt resource value: 0x7f060003
-			public const int weatherTextView = 2131099651;
+			public const int tableRow1 = 2131099651;
+			
+			// aapt resource value: 0x7f060006
+			public const int tableRow2 = 2131099654;
+			
+			// aapt resource value: 0x7f060008
+			public const int tableRow3 = 2131099656;
 			
 			private Id()
 			{

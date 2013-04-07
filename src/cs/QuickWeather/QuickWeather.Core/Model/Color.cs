@@ -2,11 +2,11 @@
 {
     public class Color
     {
-        public int Red { get; private set; }
-        public int Green { get; private set; }
-        public int Blue { get; private set; }
+        public byte Red { get; private set; }
+        public byte Green { get; private set; }
+        public byte Blue { get; private set; }
 
-        public Color(int red, int green, int blue)
+        public Color(byte red, byte green, byte blue)
         {
             Red = red;
             Green = green;

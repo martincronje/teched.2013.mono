@@ -1,15 +1,15 @@
-using System.Threading.Tasks;
 using Android.Content;
-using Xamarin.Geolocation;
+using QuickWeather.Core.Services;
 
 namespace QuickWeather.Core.ViewController
 {
     public partial class CurrentLocationWeatherViewController
     {
-        public CurrentLocationWeatherViewController(ICurrentLocationWeatherView view, Context context)
+        public CurrentLocationWeatherViewController(ICurrentLocationWeatherView view, IWeatherService weatherService, Context context)
         {
             _view = view;
-            _geoLocationService = new GeoLocationService();
+            _weatherService = weatherService;
+            _geoLocationService = new GeoLocationService(context);
         }
     }
 }

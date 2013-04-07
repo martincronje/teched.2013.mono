@@ -1,81 +1,54 @@
 ﻿using System;
-using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
 using QuickWeather.Core.Model;
+using QuickWeather.Core.Services;
 using QuickWeather.Core.ViewController;
 
 namespace QuickWeather.WindowsPhone
 {
     public partial class MainPage : ICurrentLocationWeatherView
     {
-        private readonly TextBlock _coordTextBox;
-        private readonly TextBlock _stationTextBox;
-        private readonly TextBlock _weatherTextBox;
-        private readonly CurrentLocationWeatherViewController _viewController;
-        private Button _button;
+        private readonly CurrentLocationWeatherViewController _controller;
 
         public MainPage()
         {
             InitializeComponent();
 
-            _coordTextBox = new TextBlock
-                {
-                    Text = "Coords",
-                    Margin = new Thickness(10, 0, 0, 0)
-                };
-            _stationTextBox = new TextBlock
-                {
-                    Text = "Station",
-                    Margin = new Thickness(10, 30, 0, 0)
-                };
-            _weatherTextBox = new TextBlock
-                {
-                    Text = "Weather",
-                    Margin = new Thickness(10, 60, 0, 0)
-                };
-            _button = new Button
-                {
-                    Height = 80,
-                    Content = "Fetch",
-                    Margin = new Thickness(10, 90, 0, 0),
-                    Background = new SolidColorBrush(Color.FromArgb(200, 200, 200, 255))
-                };
+            Button.Tap += (sender, args) => _controller.FetchPosition();
 
-            _button.Tap += (sender, args) => _viewController.FetchPosition();
-
-            ContentPanel.Children.Add(_coordTextBox);
-            ContentPanel.Children.Add(_stationTextBox);
-            ContentPanel.Children.Add(_weatherTextBox);
-            ContentPanel.Children.Add(_button);
-
-            _viewController = new CurrentLocationWeatherViewController(this);
+            _controller = new CurrentLocationWeatherViewController(this, new WeatherServiceStub());
         }
 
-        public void DisplayCurrentLocation(GeoLocation geoLocation)
+        public void DisplayForecast(ForecastDay forecastDay)
         {
-            _coordTextBox.Text = string.Format("Coordinates {0}", geoLocation.ToFriendlyString());
-            _viewController.FetchLocations(geoLocation);
-        }
+            Deployment.Current.Dispatcher.BeginInvoke(() =>
+                {
+                    TempHighLabel.Text = string.Format("high: {0}°", forecastDay.High);
+                    TempLowLabel.Text = string.Format("low: {0}°", forecastDay.Low);
 
-        public void DisplayClosestWeatherStations(OfficialStations stations)
-        {
-            var station = stations.First();
+                    var color = _controller.GetTemperatureColour(forecastDay.High);
+                    LayoutRoot.Background = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, color.Red, color.Green, color.Blue));
+                    
+                    Icon.Text = _controller.GetMeteoconCharacter(forecastDay);
+                });
 
-            _stationTextBox.Text = string.Format("Station: {0}, {1}", station.City, station.Country);
-            _viewController.FetchWeather(station.Location);
-        }
-
-        public void DisplayForecast(ForecastDays forecast)
-        {
-            var forecastDay = forecast.First();
-            _weatherTextBox.Text = string.Format("Today High: {0}", forecastDay.High);
         }
 
         public void DisplayError(Exception exception)
         {
-            _coordTextBox.Text = string.Format("Error: {0}", exception.Message);
+            Deployment.Current.Dispatcher.BeginInvoke(() =>
+                {
+                    MessageLabel.Text = string.Format("Error: {0}", exception.Message);
+                });
+        }
+
+        public void DisplayProgressUpdate(string message)
+        {
+            Deployment.Current.Dispatcher.BeginInvoke(() =>
+            {
+                MessageLabel.Text = message;
+            });
         }
     }
 }

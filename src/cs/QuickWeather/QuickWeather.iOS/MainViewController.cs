@@ -30,20 +30,24 @@ namespace QuickWeather.iOS
 
         public void DisplayForecast(ForecastDay forecastDay)
         {
-            System.Diagnostics.Debug.WriteLine("DisplayForecast" + System.Threading.Thread.CurrentThread.ManagedThreadId);
             InvokeOnMainThread(() =>
                 {
-                    System.Diagnostics.Debug.WriteLine("DisplayForecast" +
-                                                       System.Threading.Thread.CurrentThread.ManagedThreadId);
                     TempHighLabel.Text = string.Format("high: {0}°", forecastDay.High);
                     TempLowLabel.Text = string.Format("low: {0}°", forecastDay.Low);
 
-                    UIView.Animate(2, () =>
+                    UIView.Animate(1, () =>
                         {
-                            var color = _controller.GetTemperatureColour(forecastDay.High);
-                            View.BackgroundColor = UIColor.FromRGB(color.Red, color.Green, color.Blue);
-                            Icon.Text = _controller.GetMeteoconCharacter(forecastDay);
-                        });
+                            Icon.Alpha = 0;
+                        }, () =>
+                            {
+                                Icon.Text = _controller.GetMeteoconCharacter(forecastDay);
+                                UIView.Animate(2, () =>
+                                    {
+                                        var color = _controller.GetTemperatureColour(forecastDay.High);
+                                        View.BackgroundColor = UIColor.FromRGB(color.Red, color.Green, color.Blue);
+                                        Icon.Alpha = 1;
+                                    });
+                            });
                 });
         }
 
@@ -58,12 +62,8 @@ namespace QuickWeather.iOS
 
         public void DisplayProgressUpdate(string message)
         {
-            System.Diagnostics.Debug.WriteLine("DisplayProgressUpdate" +
-                                               System.Threading.Thread.CurrentThread.ManagedThreadId);
             InvokeOnMainThread(() =>
                 {
-                    System.Diagnostics.Debug.WriteLine("DisplayProgressUpdate" +
-                                                       System.Threading.Thread.CurrentThread.ManagedThreadId);
                     MessageLabel.Text = string.Format(message);
                 });
         }

@@ -1,47 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:minWidth="25px"
-    android:minHeight="25px"
-    android:id="@+id/LinearLayout">
+<TableLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:minWidth="25px"
+    p1:minHeight="25px"
+    p1:layout_width="fill_parent"
+    p1:layout_height="fill_parent"
+    p1:id="@+id/tableLayout1"
+    p1:weightSum="2"
+    p1:stretchColumns="0,1">
+  <TableRow
+      p1:id="@+id/tableRow0"
+      p1:layout_width="fill_parent"
+      p1:layout_weight="0">
     <TextView
-        android:text="Coordinates:"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/coordTextView"
-        android:height="50px"
-        android:paddingTop="5px"
-        android:paddingLeft="5px" />
-    <TextView
-        android:text="Weather Station: "
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/stationTextView"
-        android:height="50px"
-        android:paddingTop="5px"
-        android:paddingLeft="5px" />
-    <TextView
-        android:text="Weather: "
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/weatherTextView"
-        android:height="50px"
-        android:paddingTop="5px"
-        android:paddingLeft="5px" />
-    <TextView
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView1" />
-    <Button
-        android:text="Fetch"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button" />
-</LinearLayout>
+            p1:id="@+id/TextViewMessage"
+            p1:gravity="center"
+            p1:text="no stations selected"
+            p1:typeface="sans"
+            p1:layout_width="fill_parent"
+            p1:layout_span="2"
+            p1:layout_height="fill_parent"
+            p1:textSize="9pt" />
+
+  </TableRow>
+    <TableRow
+        p1:id="@+id/tableRow1"
+        p1:layout_width="fill_parent"
+        p1:layout_weight="0">
+        <TextView
+            p1:id="@+id/TextViewTempLow"
+            p1:gravity="left"
+            p1:text="low: 0°"
+            p1:textStyle="normal"
+            p1:typeface="sans"
+            p1:layout_width="fill_parent"
+            p1:textSize="13pt"
+            p1:layout_marginLeft="10px" />
+        <TextView
+            p1:id="@+id/TextViewTempHigh"
+            p1:gravity="right"
+            p1:text="high: 0°"
+            p1:textStyle="normal"
+            p1:typeface="sans"
+            p1:layout_width="fill_parent"
+            p1:textSize="13pt"
+            p1:layout_marginRight="10px" />
+    </TableRow>
+    <TableRow
+        p1:id="@+id/tableRow2"
+        p1:layout_height="fill_parent"
+        p1:layout_weight="2">
+        <TextView
+            p1:id="@+id/Icon"
+            p1:gravity="center"
+            p1:text=")"
+            p1:textStyle="bold"
+            p1:typeface="serif"
+            p1:layout_width="fill_parent"
+            p1:layout_span="2"
+            p1:layout_height="fill_parent"
+            p1:textSize="72pt" />
+    </TableRow>
+    <TableRow
+        p1:id="@+id/tableRow3"
+        p1:layout_weight="0">
+        <Button
+            p1:id="@+id/Button"
+            p1:gravity="center"
+            p1:layout_width="fill_parent"
+            p1:layout_span="2"
+            p1:textSize="13pt"
+            p1:text="(" />
+    </TableRow>
+</TableLayout>
