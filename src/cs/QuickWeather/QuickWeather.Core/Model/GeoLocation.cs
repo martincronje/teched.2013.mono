@@ -23,7 +23,7 @@ namespace QuickWeather.Core.Model
 
         public string ToFriendlyString()
         {
-            return string.Format("{0}, {1}", Latitude.ToString("N4"), Longitude.ToString("N4"));
+            return string.Format("{0}, {1}", Latitude.ToString("N1"), Longitude.ToString("N1"));
         }
     }
 }

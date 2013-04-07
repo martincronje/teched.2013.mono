@@ -1,6 +1,6 @@
 ﻿using QuickWeather.Core.Model;
 
-namespace QuickWeather.Core.Proxy
+namespace QuickWeather.Core.Services
 {
     public interface IWeatherService
     {

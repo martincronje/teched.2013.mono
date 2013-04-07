@@ -1,4 +1,4 @@
-namespace QuickWeather.Core.Proxy.Forecast
+namespace QuickWeather.Core.Services.Forecast
 {
 	public class ForecastResponse
 	{

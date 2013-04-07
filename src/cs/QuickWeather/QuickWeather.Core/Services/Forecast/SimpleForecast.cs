@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace QuickWeather.Core.Proxy.Forecast
+namespace QuickWeather.Core.Services.Forecast
 {
     public class SimpleForecast
     {

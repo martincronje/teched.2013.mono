@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.Serialization;
 
-namespace QuickWeather.Core.Proxy.Location
+namespace QuickWeather.Core.Services.Location
 {
     public class WeatherStations
     {

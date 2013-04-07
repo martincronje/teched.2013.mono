@@ -1,6 +1,4 @@
-using System.Runtime.Serialization;
-
-namespace QuickWeather.Core.Proxy.Forecast
+namespace QuickWeather.Core.Services.Forecast
 {
     public class TextForecastDay
     {

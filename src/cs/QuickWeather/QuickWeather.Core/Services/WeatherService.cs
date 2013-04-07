@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading;
 using QuickWeather.Core.Model;
-using QuickWeather.Core.Proxy.Forecast;
-using QuickWeather.Core.Proxy.Location;
+using QuickWeather.Core.Services.Forecast;
+using QuickWeather.Core.Services.Location;
 using RestSharp;
 
-namespace QuickWeather.Core.Proxy
+namespace QuickWeather.Core.Services
 {
     public class WeatherService : IWeatherService
     {
