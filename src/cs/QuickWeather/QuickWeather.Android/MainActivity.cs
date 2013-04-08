@@ -41,32 +41,19 @@ namespace QuickWeather.UI
 
         public void DisplayForecast(ForecastDay forecastDay)
         {
-            RunOnUiThread(() =>
-                {
-                    _tempHighLabel.Text = string.Format("high: {0}°", forecastDay.High);
-                    _tempLowLabel.Text = string.Format("low: {0}°", forecastDay.Low);
-                    _icon.Text = _controller.GetMeteoconCharacter(forecastDay);
-
-                    //var color = _controller.GetTemperatureColour(forecastDay.High);
-                    //var view = Window.DecorView;
-                    //view.SetBackgroundColor(Android.Graphics.Color.Argb(255, color.Red, color.Green, color.Blue));
-                });
+            _tempHighLabel.Text = string.Format("high: {0}°", forecastDay.High);
+            _tempLowLabel.Text = string.Format("low: {0}°", forecastDay.Low);
+            _icon.Text = _controller.GetMeteoconCharacter(forecastDay);
         }
 
         public void DisplayError(Exception exception)
         {
-            RunOnUiThread(() =>
-                {
-                    _messageLabel.Text = string.Format("error: {0}", exception.Message);
-                });
+            _messageLabel.Text = string.Format("error: {0}", exception.Message);
         }
 
         public void DisplayProgressUpdate(string message)
         {
-            RunOnUiThread(() =>
-                {
-                    _messageLabel.Text = string.Format(message);
-                });
+            _messageLabel.Text = string.Format(message);
         }
     }
 }

@@ -22,33 +22,24 @@ namespace QuickWeather.WindowsPhone
 
         public void DisplayForecast(ForecastDay forecastDay)
         {
-            Deployment.Current.Dispatcher.BeginInvoke(() =>
-                {
-                    TempHighLabel.Text = string.Format("high: {0}°", forecastDay.High);
-                    TempLowLabel.Text = string.Format("low: {0}°", forecastDay.Low);
+            TempHighLabel.Text = string.Format("high: {0}°", forecastDay.High);
+            TempLowLabel.Text = string.Format("low: {0}°", forecastDay.Low);
 
-                    var color = _controller.GetTemperatureColour(forecastDay.High);
-                    LayoutRoot.Background = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, color.Red, color.Green, color.Blue));
-                    
-                    Icon.Text = _controller.GetMeteoconCharacter(forecastDay);
-                });
+            var color = _controller.GetTemperatureColour(forecastDay.High);
+            LayoutRoot.Background =
+                new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, color.Red, color.Green, color.Blue));
 
+            Icon.Text = _controller.GetMeteoconCharacter(forecastDay);
         }
 
         public void DisplayError(Exception exception)
         {
-            Deployment.Current.Dispatcher.BeginInvoke(() =>
-                {
-                    MessageLabel.Text = string.Format("Error: {0}", exception.Message);
-                });
+            MessageLabel.Text = string.Format("Error: {0}", exception.Message);
         }
 
         public void DisplayProgressUpdate(string message)
         {
-            Deployment.Current.Dispatcher.BeginInvoke(() =>
-            {
-                MessageLabel.Text = message;
-            });
+            MessageLabel.Text = message;
         }
     }
 }

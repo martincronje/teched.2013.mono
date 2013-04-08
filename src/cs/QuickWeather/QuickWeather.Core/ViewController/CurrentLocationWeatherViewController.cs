@@ -38,37 +38,66 @@ namespace QuickWeather.Core.ViewController
 
         private void HandleGeoLocatioReceived(GeoLocation geoLocation)
         {
-            var message = string.Format("searching station for {0}", geoLocation.ToFriendlyString());
-            _view.DisplayProgressUpdate(message);
-            FetchLocations(geoLocation);
+            InvokeSafeThread(() =>
+                {
+                    var message = string.Format("searching station for {0}", geoLocation.ToFriendlyString());
+                    _view.DisplayProgressUpdate(message);
+                    FetchLocations(geoLocation);
+                });
         }
 
         private void HandleLocationsReceived(OfficialStations stations)
         {
-            if (stations == null)
-            {
-                _view.DisplayError(new Exception("No stations found"));
-                return;
-            }
-            var station = stations.First();
-            _view.DisplayProgressUpdate(station.ToString());
-            FetchWeather(station.Location);
+            InvokeSafeThread(() =>
+                {
+                    if (stations == null)
+                    {
+                        _view.DisplayError(new Exception("No stations found"));
+                        return;
+                    }
+                    var station = stations.First();
+                    _view.DisplayProgressUpdate(station.ToString());
+                    FetchWeather(station.Location);
+                });
         }
 
         private void HandleForecastReceived(ForecastDays forecast)
         {
-            if (forecast == null)
-            {
-                _view.DisplayProgressUpdate("No forecast found");
-                return;
-            }
-            var forecastDay = forecast.First();
-            _view.DisplayForecast(forecastDay);
+            InvokeSafeThread(() =>
+                {
+                    if (forecast == null)
+                    {
+                        _view.DisplayProgressUpdate("No forecast found");
+                        return;
+                    }
+                    var forecastDay = forecast.First();
+                    _view.DisplayForecast(forecastDay);
+                });
         }
 
         private void HandleError(Exception exception)
         {
-            _view.DisplayError(exception);
+            InvokeSafeThread(() =>
+                {
+                    _view.DisplayError(exception);
+                });
+        }
+
+        public void InvokeSafeThread(Action action)
+        {
+#if ANDROID
+            _activity.RunOnUiThread(action);
+#else
+#if IOS
+            new MonoTouch.Foundation.NSObject().InvokeOnMainThread(()=> action());
+#else
+#if WINDOWS_PHONE
+            System.Windows.Deployment.Current.Dispatcher.BeginInvoke(action);
+#else
+#error Ensure the correct compiler directive is set.
+#endif
+#endif
+#endif
         }
 
         public Color GetTemperatureColour(int celsuis)
@@ -126,6 +155,5 @@ namespace QuickWeather.Core.ViewController
             }
             return ")";
         }
-
     }
 }

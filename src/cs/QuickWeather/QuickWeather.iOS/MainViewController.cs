@@ -30,42 +30,33 @@ namespace QuickWeather.iOS
 
         public void DisplayForecast(ForecastDay forecastDay)
         {
-            InvokeOnMainThread(() =>
-                {
-                    TempHighLabel.Text = string.Format("high: {0}°", forecastDay.High);
-                    TempLowLabel.Text = string.Format("low: {0}°", forecastDay.Low);
+            TempHighLabel.Text = string.Format("high: {0}°", forecastDay.High);
+            TempLowLabel.Text = string.Format("low: {0}°", forecastDay.Low);
 
-                    UIView.Animate(1, () =>
-                        {
-                            Icon.Alpha = 0;
-                        }, () =>
+            UIView.Animate(1, () =>
+                {
+                    Icon.Alpha = 0;
+                }, () =>
+                    {
+                        Icon.Text = _controller.GetMeteoconCharacter(forecastDay);
+                        UIView.Animate(2, () =>
                             {
-                                Icon.Text = _controller.GetMeteoconCharacter(forecastDay);
-                                UIView.Animate(2, () =>
-                                    {
-                                        var color = _controller.GetTemperatureColour(forecastDay.High);
-                                        View.BackgroundColor = UIColor.FromRGB(color.Red, color.Green, color.Blue);
-                                        Icon.Alpha = 1;
-                                    });
+                                var color = _controller.GetTemperatureColour(forecastDay.High);
+                                View.BackgroundColor = UIColor.FromRGB(color.Red, color.Green, color.Blue);
+                                Icon.Alpha = 1;
                             });
-                });
+                    });
         }
 
 
         public void DisplayError(Exception exception)
         {
-            InvokeOnMainThread(() =>
-                {
-                    MessageLabel.Text = string.Format("error: {0}", exception.Message);
-                });
+            MessageLabel.Text = string.Format("error: {0}", exception.Message);
         }
 
         public void DisplayProgressUpdate(string message)
         {
-            InvokeOnMainThread(() =>
-                {
-                    MessageLabel.Text = string.Format(message);
-                });
+            MessageLabel.Text = string.Format(message);
         }
     }
 }
