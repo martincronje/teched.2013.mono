@@ -66,6 +66,7 @@
     <Compile Include="Services\Forecast\TextForecast.cs" />
     <Compile Include="Services\Forecast\TextForecastDay.cs" />
     <Compile Include="Services\GeoLocationService.cs" />
+    <Compile Include="Services\IGeoLocationService.cs" />
     <Compile Include="Services\IWeatherService.cs" />
     <Compile Include="Services\Location\Location.cs" />
     <Compile Include="Services\Location\LocationResponse.cs" />
