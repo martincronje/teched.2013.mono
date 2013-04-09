@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-using QuickWeather.Core.Services;
-using Xamarin.Geolocation;
+﻿using QuickWeather.Core.Services;
 
 namespace QuickWeather.Core.ViewController
 {

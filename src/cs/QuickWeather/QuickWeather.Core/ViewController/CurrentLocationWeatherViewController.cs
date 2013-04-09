@@ -11,7 +11,6 @@ namespace QuickWeather.Core.ViewController
         private readonly IWeatherService _weatherService;
         private readonly GeoLocationService _geoLocationService;
 
-
         public void FetchLocalWeather()
         {
             FetchPosition();
@@ -38,7 +37,7 @@ namespace QuickWeather.Core.ViewController
 
         private void HandleGeoLocatioReceived(GeoLocation geoLocation)
         {
-            InvokeSafeThread(() =>
+            InvokeOnSafeThread(() =>
                 {
                     var message = string.Format("searching station for {0}", geoLocation.ToFriendlyString());
                     _view.DisplayProgressUpdate(message);
@@ -48,7 +47,7 @@ namespace QuickWeather.Core.ViewController
 
         private void HandleLocationsReceived(OfficialStations stations)
         {
-            InvokeSafeThread(() =>
+            InvokeOnSafeThread(() =>
                 {
                     if (stations == null)
                     {
@@ -63,7 +62,7 @@ namespace QuickWeather.Core.ViewController
 
         private void HandleForecastReceived(ForecastDays forecast)
         {
-            InvokeSafeThread(() =>
+            InvokeOnSafeThread(() =>
                 {
                     if (forecast == null)
                     {
@@ -77,26 +76,22 @@ namespace QuickWeather.Core.ViewController
 
         private void HandleError(Exception exception)
         {
-            InvokeSafeThread(() =>
+            InvokeOnSafeThread(() =>
                 {
                     _view.DisplayError(exception);
                 });
         }
 
-        public void InvokeSafeThread(Action action)
+        public void InvokeOnSafeThread(Action action)
         {
 #if ANDROID
             _activity.RunOnUiThread(action);
-#else
+#endif
 #if IOS
-            new MonoTouch.Foundation.NSObject().InvokeOnMainThread(()=> action());
-#else
+            new MonoTouch.Foundation.NSObject().InvokeOnMainThread(() => action());
+#endif
 #if WINDOWS_PHONE
             System.Windows.Deployment.Current.Dispatcher.BeginInvoke(action);
-#else
-#error Ensure the correct compiler directive is set.
-#endif
-#endif
 #endif
         }
 

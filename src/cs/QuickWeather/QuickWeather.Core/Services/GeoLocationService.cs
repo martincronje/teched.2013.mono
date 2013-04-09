@@ -10,7 +10,7 @@ using Android.Content;
 
 namespace QuickWeather.Core.Services
 {
-    internal class GeoLocationService
+    internal class GeoLocationService : IGeoLocationService
     {
         private readonly Geolocator _geolocator;
         private readonly TaskScheduler _scheduler;

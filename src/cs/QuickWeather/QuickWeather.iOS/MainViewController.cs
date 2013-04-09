@@ -9,12 +9,6 @@ namespace QuickWeather.iOS
     public partial class MainViewController : UIViewController, ICurrentLocationWeatherView
     {
         private CurrentLocationWeatherViewController _controller;
-        protected UILabel MessageLabel { get; private set; }
-        protected UIButton Button { get; set; }
-        protected UILabel TempLowLabel { get; set; }
-        protected UILabel TempHighLabel { get; set; }
-        protected UILabel Icon { get; private set; }
-
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
