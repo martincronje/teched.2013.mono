@@ -48,9 +48,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Color.cs" />
     <Compile Include="Model\ForecastDay.cs" />
     <Compile Include="Model\GeoLocation.cs" />
+    <Compile Include="Model\PortableColor.cs" />
     <Compile Include="Model\Station.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

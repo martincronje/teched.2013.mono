@@ -85,29 +85,29 @@ namespace QuickWeather.Core.ViewController
         public void InvokeOnSafeThread(Action action)
         {
 #if ANDROID
-            _activity.RunOnUiThread(action);
-#endif
-#if IOS
-            new MonoTouch.Foundation.NSObject().InvokeOnMainThread(() => action());
-#endif
-#if WINDOWS_PHONE
+    _activity.RunOnUiThread(action);
+#elif IOS
+    new MonoTouch.Foundation.NSObject().InvokeOnMainThread(() => action());
+#elif WINDOWS_PHONE
             System.Windows.Deployment.Current.Dispatcher.BeginInvoke(action);
+#else
+#error No device specified
 #endif
         }
 
-        public Color GetTemperatureColour(int celsuis)
+        public PortableColor GetTemperatureColour(int celsuis)
         {
             if (celsuis >= 30)
-                return new Color(207, 68, 0);
+                return new PortableColor(207, 68, 0);
             if (celsuis >= 24)
-                return new Color(207, 141, 0);
+                return new PortableColor(207, 141, 0);
             if (celsuis >= 21)
-                return new Color(0, 149, 137);
+                return new PortableColor(0, 149, 137);
             if (celsuis >= 15)
-                return new Color(0, 117, 207);
+                return new PortableColor(0, 117, 207);
             if (celsuis >= 10)
-                return new Color(0, 156, 207);
-            return new Color(0, 195, 207);
+                return new PortableColor(0, 156, 207);
+            return new PortableColor(0, 195, 207);
         }
 
         public string GetMeteoconCharacter(ForecastDay forecastDay)

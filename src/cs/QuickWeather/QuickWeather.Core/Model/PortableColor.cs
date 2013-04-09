@@ -1,12 +1,12 @@
 ﻿namespace QuickWeather.Core.Model
 {
-    public class Color
+    public class PortableColor
     {
         public byte Red { get; private set; }
         public byte Green { get; private set; }
         public byte Blue { get; private set; }
 
-        public Color(byte red, byte green, byte blue)
+        public PortableColor(byte red, byte green, byte blue)
         {
             Red = red;
             Green = green;
