@@ -15,11 +15,11 @@ namespace QuickWeather.UI
 {
     public partial class MainActivity
     {
-        public TextView Icon { get; private set; }
-        public TextView TempLowLabel { get; private set; }
-        public TextView TempHighLabel { get; private set; }
-        public TextView MessageLabel { get; private set; }
-        public TextView Button { get; private set; }
+        private TextView Icon { get; set; }
+        private TextView TempLowLabel { get; set; }
+        private TextView TempHighLabel { get; set; }
+        private TextView MessageLabel { get; set; }
+        private TextView Button { get; set; }
 
         private void InitializeComponent()
         {

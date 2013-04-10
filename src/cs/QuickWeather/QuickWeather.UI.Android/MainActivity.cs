@@ -14,9 +14,9 @@ namespace QuickWeather.UI
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+            SetContentView(Resource.Layout.Main);
             InitializeComponent();
 
-            SetContentView(Resource.Layout.Main);
 
             _controller = new CurrentLocationWeatherViewController(this, new WeatherServiceStub(), this);
 
