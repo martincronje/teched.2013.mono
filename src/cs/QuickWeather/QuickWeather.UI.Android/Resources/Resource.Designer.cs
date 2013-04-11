@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("QuickWeather.UI.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("QuickWeather.UI.Android.Resource", IsApplication=true)]
 
-namespace QuickWeather.UI
+namespace QuickWeather.UI.Android
 {
 	
 	
@@ -26,11 +26,11 @@ namespace QuickWeather.UI
 		
 		public static void UpdateIdValues()
 		{
-			QuickWeather.Core.Resource.Drawable.monoandroidsplash = QuickWeather.UI.Resource.Drawable.monoandroidsplash;
-			QuickWeather.Core.Resource.Layout.monoandroidsplash = QuickWeather.UI.Resource.Layout.monoandroidsplash;
-			QuickWeather.Core.Resource.String.ApplicationName = QuickWeather.UI.Resource.String.ApplicationName;
-			QuickWeather.Core.Resource.String.Hello = QuickWeather.UI.Resource.String.Hello;
-			QuickWeather.Core.Resource.Style.Mono_Android_Theme_Splash = QuickWeather.UI.Resource.Style.Mono_Android_Theme_Splash;
+			QuickWeather.Core.Resource.Drawable.monoandroidsplash = QuickWeather.UI.Android.Resource.Drawable.monoandroidsplash;
+			QuickWeather.Core.Resource.Layout.monoandroidsplash = QuickWeather.UI.Android.Resource.Layout.monoandroidsplash;
+			QuickWeather.Core.Resource.String.ApplicationName = QuickWeather.UI.Android.Resource.String.ApplicationName;
+			QuickWeather.Core.Resource.String.Hello = QuickWeather.UI.Android.Resource.String.Hello;
+			QuickWeather.Core.Resource.Style.Mono_Android_Theme_Splash = QuickWeather.UI.Android.Resource.Style.Mono_Android_Theme_Splash;
 		}
 		
 		public partial class Attribute

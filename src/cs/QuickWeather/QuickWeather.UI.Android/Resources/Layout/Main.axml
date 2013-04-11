@@ -7,11 +7,11 @@
     p1:id="@+id/tableLayout1"
     p1:weightSum="2"
     p1:stretchColumns="0,1">
-  <TableRow
-      p1:id="@+id/tableRow0"
-      p1:layout_width="fill_parent"
-      p1:layout_weight="0">
-    <TextView
+    <TableRow
+        p1:id="@+id/tableRow0"
+        p1:layout_width="fill_parent"
+        p1:layout_weight="0">
+        <TextView
             p1:id="@+id/TextViewMessage"
             p1:gravity="center"
             p1:text="no stations selected"
@@ -20,8 +20,7 @@
             p1:layout_span="2"
             p1:layout_height="fill_parent"
             p1:textSize="9pt" />
-
-  </TableRow>
+    </TableRow>
     <TableRow
         p1:id="@+id/tableRow1"
         p1:layout_width="fill_parent"
