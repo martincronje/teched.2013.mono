@@ -12,10 +12,8 @@ namespace HelloWorld.Android
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-
+			
 			SetContentView (Resource.Layout.Main);
-
-			var layout = (RelativeLayout)FindViewById(Resource.Id.layout);
 		}
 	}
 }
