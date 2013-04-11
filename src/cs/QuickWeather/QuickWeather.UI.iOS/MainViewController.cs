@@ -27,21 +27,11 @@ namespace QuickWeather.UI
             TempHighLabel.Text = string.Format("high: {0}°", forecastDay.High);
             TempLowLabel.Text = string.Format("low: {0}°", forecastDay.Low);
 
-            UIView.Animate(1, () =>
-                {
-                    Icon.Alpha = 0;
-                }, () =>
-                    {
-                        Icon.Text = _controller.GetMeteoconCharacter(forecastDay);
-                        UIView.Animate(2, () =>
-                            {
-                                var color = _controller.GetTemperatureColour(forecastDay.High);
-                                View.BackgroundColor = UIColor.FromRGB(color.Red, color.Green, color.Blue);
-                                Icon.Alpha = 1;
-                            });
-                    });
-        }
+            Icon.Text = _controller.GetMeteoconCharacter(forecastDay);
 
+            var color = _controller.GetTemperatureColour(forecastDay.High);
+            View.BackgroundColor = UIColor.FromRGB(color.Red, color.Green, color.Blue);
+        }
 
         public void DisplayError(Exception exception)
         {

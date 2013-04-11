@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: Android.Runtime.ResourceDesignerAttribute("QuickWeather.UI.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("QuickWeather.UI.Resource", IsApplication=true)]
 
 namespace QuickWeather.UI
 {
@@ -19,9 +19,9 @@ namespace QuickWeather.UI
 	public partial class Resource
 	{
 		
-		Resource()
+		static Resource()
 		{
-			global::Android.Runtime.ResourceIdManager.UpdateIdValues ();
+			global::Android.Runtime.ResourceIdManager.UpdateIdValues();
 		}
 		
 		public static void UpdateIdValues()
@@ -36,6 +36,11 @@ namespace QuickWeather.UI
 		public partial class Attribute
 		{
 			
+			static Attribute()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
 			private Attribute()
 			{
 			}
@@ -49,6 +54,11 @@ namespace QuickWeather.UI
 			
 			// aapt resource value: 0x7f020001
 			public const int monoandroidsplash = 2130837505;
+			
+			static Drawable()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
 			
 			private Drawable()
 			{
@@ -88,6 +98,11 @@ namespace QuickWeather.UI
 			// aapt resource value: 0x7f060008
 			public const int tableRow3 = 2131099656;
 			
+			static Id()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
 			private Id()
 			{
 			}
@@ -101,6 +116,11 @@ namespace QuickWeather.UI
 			
 			// aapt resource value: 0x7f030001
 			public const int monoandroidsplash = 2130903041;
+			
+			static Layout()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
 			
 			private Layout()
 			{
@@ -116,6 +136,11 @@ namespace QuickWeather.UI
 			// aapt resource value: 0x7f040000
 			public const int Hello = 2130968576;
 			
+			static String()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
 			private String()
 			{
 			}
@@ -126,6 +151,11 @@ namespace QuickWeather.UI
 			
 			// aapt resource value: 0x7f050000
 			public const int Mono_Android_Theme_Splash = 2131034112;
+			
+			static Style()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
 			
 			private Style()
 			{

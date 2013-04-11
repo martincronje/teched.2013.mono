@@ -1,4 +1,6 @@
-﻿namespace QuickWeather.UI
+﻿using QuickWeather.UI.Resources;
+
+namespace QuickWeather.UI
 {
     /// <summary>
     /// Provides access to string resources.
